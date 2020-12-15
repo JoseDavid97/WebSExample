@@ -4,7 +4,7 @@ var router = express.Router();
 var TaskModel = require('./taskschema'); 
 
 const aws = require('aws-sdk');  
-let env = {
+let env = new aws.S3{
     MDBUser: process.env.User,
     MDBPwd: process.env.Pwd,
     MDBServ: process.env.Serv,
