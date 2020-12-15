@@ -2,12 +2,18 @@ var mongoose = require('mongoose');
 var express = require('express');  
 var router = express.Router(); 
 var TaskModel = require('./taskschema'); 
-const env = require('node-env-file'); // .env file
-env(__dirname + '/.env');
-  
+
+const aws = require('aws-sdk');  
+let env = new aws.S3{
+    MDBUser: process.env.User,
+    MDBPwd: process.env.Pwd,
+    MDBServ: process.env.Serv,
+    MDBName: process.env.DBName,
+}
+
 // Connecting to database 
-var query = 'mongodb+srv://'+process.env.DBMONGOUSER+':'+process.env.DBMONGOPASS+'@'+process.env.DBMONGOSERV+'/'+process.env.DBMONGO+'?retryWrites=true&w=majority'
-console.log(query);
+var query = 'mongodb+srv://'+env.MDBUser+':'+env.MDBPwd+'@'+env.MDBServ+'/'+env.MDBName+'?retryWrites=true&w=majority'
+  
 const db = (query); 
 mongoose.Promise = global.Promise; 
   

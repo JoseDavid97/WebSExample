@@ -12,6 +12,7 @@
   "author": "Jose David Libreros",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.811.0",
     "express": "^4.17.1",
     "mongoose": "^5.11.8",
     "node-env-file": "^0.1.8"
