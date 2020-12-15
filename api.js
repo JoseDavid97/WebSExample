@@ -2,14 +2,13 @@ var mongoose = require('mongoose');
 var express = require('express');  
 var router = express.Router(); 
 var TaskModel = require('./taskschema'); 
-
-const aws = require('aws-sdk');  
-let env = new aws.S3({
+  
+let env = {
     MDBUser: process.env.User,
     MDBPwd: process.env.Pwd,
     MDBServ: process.env.Serv,
     MDBName: process.env.DBName,
-});
+};
 
 // Connecting to database 
 var query = 'mongodb+srv://'+env.MDBUser+':'+env.MDBPwd+'@'+env.MDBServ+'/'+env.MDBName+'?retryWrites=true&w=majority'
